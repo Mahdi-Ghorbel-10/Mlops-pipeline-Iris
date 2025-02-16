@@ -1,83 +1,113 @@
-# MLOps Pipeline with DVC & Git
+# 🚀 MLOps Pipeline: Automated Model Retraining, Deployment, and Monitoring
 
-## 🚀 Project Overview
-This project demonstrates an **MLOps workflow** using **DVC (Data Version Control) and Git** to track datasets, ensuring reproducibility.
+## 📌 Project Overview
+This **MLOps pipeline** automates the entire lifecycle of a machine learning model, including:
 
-## 👤 Authors
-- **Your Name** - MLOps Engineer
+✅ **Initial Model Training & Evaluation** using `MLflow`
+✅ **Data Drift Detection** using `Evidently AI`
+✅ **Model Retraining & Deployment** with `Airflow` and `Django API`
+✅ **Real-Time Monitoring** using `Prometheus & Grafana`
+✅ **Email Alerts** when data drift is detected
 
-## 📂 Project Structure
+---
+
+## 🔧 Technologies Used
+- **Machine Learning**: `scikit-learn`, `pandas`, `numpy`
+- **Model Management**: `MLflow`
+- **Drift Detection**: `Evidently AI`
+- **Workflow Automation**: `Airflow`
+- **Model Deployment**: `Django REST API`
+- **Monitoring**: `Prometheus`, `Grafana`
+- **CI/CD**:`Jenkins` 
+
+---
+
+## 🔹 Project Workflow
+
+![MLOps Pipeline Workflow](image.png)
+
+
+
+---
+
+## 🚀 Features
+### 🔹 **Initial Model Training & Evaluation**
+- Load dataset from `data/raw_dataset.csv`
+- Perform **Exploratory Data Analysis (EDA)**
+- Train a **RandomForest model** (`train_model.py`)
+- Evaluate the model and **log metrics to MLflow**
+
+### 🔹 **Model Deployment**
+- Deploy the **best-performing model** to **Django API** (`/api/predict`)
+- Serve predictions via **REST API**
+
+### 🔹 **Drift Detection & Retraining Pipeline**
+- **Airflow DAG** runs `drift_detection.py` daily
+- If **drift is detected**, it:
+  - **Sends an email alert** 📧
+  - **Triggers model retraining** (`model_retraining_evaluating.py`)
+  - **Updates MLflow registry & deploys the new model**
+
+### 🔹 **Monitoring & Alerts**
+- **Prometheus** scrapes metrics from **Django API** (`/metrics`)
+- **Grafana Dashboards** track:
+  - Total API requests
+  - Prediction latency
+  - Drift detection alerts
+- Email alerts are sent when drift is detected
+
+---
+
+## 📌 Setup Instructions
+
+### 🔹 **1️⃣ Clone Repository**
+```bash
+git clone https://github.com/your-repo/mlops-pipeline.git
+cd mlops-pipeline
 ```
-📂 mlops-project/
- ┣ 📂 data/  # Stores datasets (Tracked with DVC)
- ┃ ┣ 📄 raw_dataset.csv.dvc  # DVC metadata file
- ┃ ┣ 📄 processed_dataset.csv  # Processed dataset
- ┣ 📂 src/  # Scripts for processing & training
- ┃ ┣ 📄 data_processing.py  # Data preprocessing
- ┃ ┣ 📄 train_model.py  # Model training
- ┃ ┣ 📄 drift_detection.py  # Drift detection
- ┃ ┗ 📄 evaluate_deploy.py  # Model evaluation
- ┣ 📄 .dvc  # DVC config file
- ┣ 📄 auto_retraining.py  # Airflow DAG for automation
- ┣ 📄 Jenkinsfile  # CI/CD pipeline script
- ┣ 📄 requirements.txt  # Dependencies
- ┗ 📄 README.md  # Project Documentation
-```
 
-## ✅ Features
-- **Data Versioning with DVC** 🗂️
-- **Experiment Tracking with MLflow** 📊
-- **Drift Detection with Evidently AI** 🔎
-- **Auto-Retraining with Apache Airflow** 🔄
-- **Model Deployment with BentoML** 🚀
-- **CI/CD Automation with Jenkins** 🛠
-
-## 🛠 Setup Instructions
-
-### 1️⃣ Install Dependencies
+### 🔹 **2️⃣ Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Initialize Git & DVC
+### 🔹 **3️⃣ Start MLflow Tracking Server**
 ```bash
-git init
-dvc init
+mlflow server --backend-store-uri sqlite:///mlflow.db --host 0.0.0.0 --port 5000
 ```
 
-### 3️⃣ Track Dataset with DVC
+### 🔹 **4️⃣ Run Django API**
 ```bash
-dvc add data/raw_dataset.csv
-git add data/.gitignore data/raw_dataset.csv.dvc
-git commit -m "Added dataset tracking with DVC"
-dvc push
+python manage.py runserver 8000
 ```
 
-### 4️⃣ Train the Model
+### 🔹 **5️⃣ Start Airflow Scheduler**
 ```bash
-python src/train_model.py
+airflow scheduler &
+airflow webserver --port 8080 &
 ```
 
-### 5️⃣ Detect Drift & Retrain if Needed
+### 🔹 **6️⃣ Start Prometheus & Grafana**
 ```bash
-python src/drift_detection.py
+sudo systemctl start prometheus
+grafana-server &
 ```
 
-### 6️⃣ Serve Model with BentoML
-```bash
-bentoml serve src/predict_service.py:svc --port 3000
-```
+---
 
-## 📁 Remote Storage (Optional)
-To use a cloud storage like AWS S3 or Google Cloud Storage for dataset versioning:
-```bash
-dvc remote add myremote s3://your-bucket-name
-dvc push
-```
+## 📌 API Endpoints
+| **Endpoint** | **Method** | **Description** |
+|-------------|-----------|----------------|
+| `/api/predict/` | `POST` | Predict with the latest model |
+| `/api/deploy/` | `POST` | Reload latest model from MLflow |
+| `/metrics/` | `GET` | Prometheus metrics for monitoring |
 
-## 🐝 Contributing
-Feel free to contribute by submitting a pull request!
+---
 
-## 📝 License
-This project is licensed under the MIT License.
+## 📌 Next Steps
+✅ **Deploy on Kubernetes**
+✅ **Integrate Slack Alerts**
+✅ **Use AWS S3 for Data Storage**
+
+📌 *If you're building an MLOps pipeline, let's connect!* 🚀🔥
 
