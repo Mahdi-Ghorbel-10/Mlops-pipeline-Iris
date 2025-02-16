@@ -1,0 +1,15 @@
+artifact_uri: file:///home/mahdi/Desktop/DataScience/Mlops-pipeline-Iris/mlruns/295702318243707093/d87ad92a00134fdfaae1276bfbf96dc9/artifacts
+end_time: 1739701126703
+entry_point_name: ''
+experiment_id: '295702318243707093'
+lifecycle_stage: active
+run_id: d87ad92a00134fdfaae1276bfbf96dc9
+run_name: bouncy-kit-335
+run_uuid: d87ad92a00134fdfaae1276bfbf96dc9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739701115507
+status: 4
+tags: []
+user_id: mahdi

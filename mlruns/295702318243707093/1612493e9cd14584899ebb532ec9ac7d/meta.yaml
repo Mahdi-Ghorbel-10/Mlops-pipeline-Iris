@@ -1,0 +1,15 @@
+artifact_uri: file:///home/mahdi/Desktop/DataScience/Mlops-pipeline-Iris/mlruns/295702318243707093/1612493e9cd14584899ebb532ec9ac7d/artifacts
+end_time: 1739706933806
+entry_point_name: ''
+experiment_id: '295702318243707093'
+lifecycle_stage: active
+run_id: 1612493e9cd14584899ebb532ec9ac7d
+run_name: debonair-fish-394
+run_uuid: 1612493e9cd14584899ebb532ec9ac7d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739706933157
+status: 3
+tags: []
+user_id: mahdi

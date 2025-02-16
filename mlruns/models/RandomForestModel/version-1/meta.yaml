@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1739702075519
+current_stage: None
+description: null
+last_updated_timestamp: 1739702075519
+name: RandomForestModel
+run_id: 1f26ea2a133249578efbede7c6b67b73
+run_link: null
+source: file:///home/mahdi/Desktop/DataScience/Mlops-pipeline-Iris/mlruns/295702318243707093/1f26ea2a133249578efbede7c6b67b73/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///home/mahdi/Desktop/DataScience/Mlops-pipeline-Iris/mlruns/295702318243707093/1f26ea2a133249578efbede7c6b67b73/artifacts/model
+user_id: null
+version: 1

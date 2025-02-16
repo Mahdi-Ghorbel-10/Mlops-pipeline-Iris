@@ -1,0 +1,15 @@
+artifact_uri: file:///home/mahdi/Desktop/DataScience/Mlops-pipeline-Iris/mlruns/295702318243707093/266becdc43ed41e1b9151a4c7df0184d/artifacts
+end_time: 1739702372668
+entry_point_name: ''
+experiment_id: '295702318243707093'
+lifecycle_stage: active
+run_id: 266becdc43ed41e1b9151a4c7df0184d
+run_name: tasteful-perch-935
+run_uuid: 266becdc43ed41e1b9151a4c7df0184d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739702372123
+status: 3
+tags: []
+user_id: mahdi

@@ -1,0 +1,5 @@
+python-multipart
+bentoml
+mlflow
+pandas
+sklearn
